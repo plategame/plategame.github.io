@@ -1,22 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useEffect, useState } from 'react';
+import StateButton from './components/StateButton';
 
-function App() {
+const App = () => {
+
+  useEffect(() => {
+    document.title = "License Plate Game";
+  }, []);
+
+  const allStates = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado'];
+
+  const [showSeen, setShowSeen] = useState(true);
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <input type="checkbox" className="showSeenCheck" checked={showSeen} value="showSeen" onChange={() => setShowSeen(!showSeen)} />
+        {allStates.map(s => <StateButton key={s} showSeen={showSeen}>{s}</StateButton>)}
       </header>
     </div>
   );
