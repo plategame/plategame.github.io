@@ -1,11 +1,13 @@
 .state {
     height: 2em;
-    width: 6em;
+    width: 7em;
     border-style: solid;
     border-width: 1px;
     border-color: white;
     border-radius: 5px;
     margin-top: 1em;
+    padding-top: 0.8em;
+    /* margin: auto; */
 }
 
 .unseen {
