@@ -48,11 +48,11 @@ const App = () => {
     }
   }
 
-  const setSeen = (state) => {
+  const toggleSeen = (state) => {
 
     // Mark all states with matching names as "seen"
     let tempArray = [...stateArray];
-    tempArray.filter(p => p.name === state).forEach(p => p.seen = true);
+    tempArray.filter(p => p.name === state).forEach(p => p.seen = !p.seen);
     setStateArray(tempArray);
 
     // Update the URL to include the game state
@@ -86,7 +86,7 @@ const App = () => {
           <div id="resetButton" onClick={resetGame}>Reset</div>
         </div>
         { stateArray.map(so =>
-          <StateButton key={so.name} seen={so.seen} showSeen={showSeen} setSeen={setSeen}>{so.name}</StateButton>
+          <StateButton key={so.name} seen={so.seen} showSeen={showSeen} toggleSeen={toggleSeen}>{so.name}</StateButton>
         )}
       </header>
     </div>

@@ -6,12 +6,12 @@ const StateButton = (props) => {
 
     if (props.seen) {
         if (props.showSeen) {
-            return (<div className="seen state">{name}</div>);
+            return (<div className="seen state" onClick={() => props.toggleSeen(name)}>{name}</div>);
         } else {
             return null;
         }
     } else {
-        return (<div className="unseen state" onClick={() => props.setSeen(name)}>{name}</div>);
+        return (<div className="unseen state" onClick={() => props.toggleSeen(name)}>{name}</div>);
     }
 }
 

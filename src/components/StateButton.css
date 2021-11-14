@@ -7,11 +7,7 @@
     border-radius: 5px;
     margin-top: 1em;
     padding-top: 0.8em;
-    /* margin: auto; */
-}
-
-.unseen {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .seen {
