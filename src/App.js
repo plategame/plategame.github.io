@@ -8,25 +8,43 @@ const App = () => {
   useEffect(() => {
     document.title = "License Plate Game";
 
-    const gameState = window.location.pathname.substring(1);
+    const gameState = getUrlParam('state');
 
     if (isValidGame(gameState)) {
       const [show, array ] = restoreGame(gameState);
       setShowSeen(show);
       setStateArray(array);
     } else {
-      setUri('');
+      setUrlParams('');
     }
   }, []);
 
   const [stateArray, setStateArray] = useState(newGame());
   const [showSeen, setShowSeen] = useState(true);
 
+  const getUrlParam = (id) => {
+    const params = window.location.search;
+
+    if (!params.startsWith("?")) {
+      return '';
+    }
+
+    const splitParams = params.substring(1).split('&');
+
+    for (const p of splitParams) {
+      if (p.startsWith(id + '=')) {
+        return p.substring(id.length + 1);
+      }
+    }
+
+    return '';
+  }
+
   const resetGame = () => {
     if (window.confirm("Are you sure you want to reset?")) {
       const newArray = newGame();
       setStateArray(newArray);
-      setUri(saveGame(newArray, showSeen))
+      setUrlParams(saveGame(newArray, showSeen))
     }
   }
 
@@ -38,18 +56,23 @@ const App = () => {
     setStateArray(tempArray);
 
     // Update the URL to include the game state
-    setUri(saveGame(tempArray, showSeen))
+    setUrlParams(saveGame(tempArray, showSeen))
   }
 
-  const setUri = (newUri) => {
+  const setUrlParams = (newGameState) => {
     let currentURL = window.location.href;
     const pathIndex = currentURL.search(window.location.pathname + '$');
-    const newURL = currentURL.substr(0, pathIndex) + '/' + newUri;
-    window.history.replaceState(null, '', newURL);
+
+    if (newGameState.length > 0) {
+      const newURL = currentURL.substr(0, pathIndex) + '/?state=' + newGameState;
+      window.history.replaceState(null, '', newURL);
+    } else {
+      window.history.replaceState(null, '', currentURL.substr(0, pathIndex) + '/');
+    }
   }
 
   const toggleShow = () => {
-    setUri(saveGame(stateArray, !showSeen));
+    setUrlParams(saveGame(stateArray, !showSeen));
     setShowSeen(!showSeen);
   }
 
