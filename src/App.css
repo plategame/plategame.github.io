@@ -38,29 +38,16 @@
   }
 }
 
-.showSeenCheck {
-  /* margin-top: 2.2em; */
-  /* padding-top: 1em; */
-  width: 2em;
-  height: 2em;
-}
-
-#showSeenCheck {
-  float: left;
-  width: 3em;
-  margin-top: 0.4em;
-}
-
 #controls {
-  margin-top: 1em;
-  width: 8em;
-  height: 2em;
+  margin-top: 0.4em;
+  width: 15em;
+  height: 4em;
+  margin-bottom: 0.5em;
 }
 
 #resetButton {
-  width: 5em;
-  margin-left: 3em;
-  height: 1.75em;
+  width: 7em;
+  margin-left: 8em;
   cursor: pointer;
   border-style: solid;
   border-width: 1px;
@@ -68,5 +55,42 @@
   color: black;
   background-color: white;
   border-radius: 5px;
-  padding-top: 0.5em;
+  line-height: 4em;
+}
+
+#showSeenButton {
+  float: left;
+  width: 7em;
+  cursor: pointer;
+  border-style: solid;
+  border-width: 1px;
+  border-color: lightblue;
+  color: black;
+  background-color: white;
+  border-radius: 5px;
+  line-height: 4em;
+}
+
+#footer {
+  height: 2em;
+  font-size: calc(1px + 2vmin);
+  text-align: right;
+  width: 100%;
+  margin-top: 1em;
+  padding-right: 1em;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+#status {
+  color: black;
+  background-color: lightgreen;
+  border-radius: 5px;
+  height: 3em;
+  width: 15em;
+  line-height: 3em;
+  margin-top: 1em;
 }

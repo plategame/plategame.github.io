@@ -79,15 +79,19 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
+        <div id="status">
+          {"Seen " + stateArray.filter(p => p.seen).length + " of 50"}
+        </div>
         <div id="controls">
-          <div id="showSeenCheck">
-            <input type="checkbox" className="showSeenCheck" checked={showSeen} value="showSeen" onChange={toggleShow} />
+          <div id="showSeenButton" onClick={toggleShow}>
+            {showSeen ? "Hide Seen" : "Show Seen"}
           </div>
           <div id="resetButton" onClick={resetGame}>Reset</div>
         </div>
         { stateArray.map(so =>
           <StateButton key={so.name} seen={so.seen} showSeen={showSeen} toggleSeen={toggleSeen}>{so.name}</StateButton>
         )}
+        <div id="footer"><a href="https://github.com/MassHesteria">Made by MassHesteria</a></div>
       </header>
     </div>
   );
