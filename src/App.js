@@ -91,7 +91,7 @@ const App = () => {
         { stateArray.map(so =>
           <StateButton key={so.name} seen={so.seen} showSeen={showSeen} toggleSeen={toggleSeen}>{so.name}</StateButton>
         )}
-        <div id="footer"><a href="https://github.com/MassHesteria">Made by MassHesteria</a></div>
+        <div id="footer"><a href="https://github.com/MassHesteria" target="_blank" rel="noopener noreferrer">Made by MassHesteria</a></div>
       </header>
     </div>
   );
